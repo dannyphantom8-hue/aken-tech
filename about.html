@@ -1,0 +1,1035 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About Us | Aken Tech Solution</title>
+    <meta
+      name="description"
+      content="Aken Tech Solution — technology, digital marketing, automation and growth solutions."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="responsiveness/responsive.css" />
+    <script src="responsiveness/menu.js" defer></script>
+    <style>
+      :root {
+        --navy: #0a1f44;
+        --blue: #126fe8;
+        --light: #eaf3ff;
+        --text: #172033;
+        --muted: #64748b;
+        --border: #dce5f0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--text);
+      }
+      .container-x {
+        max-width: min(94vw, 1720px);
+        margin: auto;
+        padding-left: clamp(1rem, 2.5vw, 2.5rem);
+        padding-right: clamp(1rem, 2.5vw, 2.5rem);
+      }
+      .card {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 5px 18px rgba(10, 31, 68, 0.06);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+      .card:hover, .service-card:hover {
+        transform: translateY(-4px) scale(1.025);
+        box-shadow: 0 16px 32px -4px rgba(10, 31, 68, 0.12), 0 8px 16px -4px rgba(10, 31, 68, 0.06);
+        border-color: #b9d0ec;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal.active.card:hover {
+        transform: translateY(-4px) scale(1.025);
+        box-shadow: 0 16px 32px -4px rgba(10, 31, 68, 0.12), 0 8px 16px -4px rgba(10, 31, 68, 0.06);
+        border-color: #b9d0ec;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+      }
+      .scroll-progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #126fe8 0%, #38bdf8 50%, #00e5ff 100%);
+        box-shadow: 0 0 10px rgba(18, 111, 232, 0.7);
+        z-index: 99999;
+        pointer-events: none;
+        transition: width 0.08s ease-out;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-weight: 700;
+        transition: 0.2s;
+      }
+      .btn-primary {
+        background: #126fe8;
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: #0b5ecb;
+        transform: translateY(-1px);
+      }
+      .btn-light {
+        background: #fff;
+        color: #0a1f44;
+      }
+      .btn-outline {
+        border: 1px solid #b9d0ec;
+        color: #126fe8;
+        background: #fff;
+      }
+      .section {
+        padding: 72px 0;
+      }
+      .eyebrow {
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        font-weight: 800;
+        color: #126fe8;
+        text-transform: uppercase;
+      }
+      .section-title {
+        font-size: clamp(1.7rem, 3vw, 2.5rem);
+        line-height: 1.08;
+        font-weight: 800;
+        color: #0a1f44;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #24324b;
+        padding: 0.65rem 0.45rem;
+        border-bottom: 2px solid transparent;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: #126fe8;
+        border-color: #126fe8;
+      }
+      .topbar {
+        background: #0a1f44;
+        color: #fff;
+        font-size: 12px;
+      }
+      .logo-mark {
+        font-weight: 900;
+        font-style: italic;
+        letter-spacing: -0.08em;
+        font-size: 30px;
+        color: #126fe8;
+        line-height: 0.8;
+      }
+      .logo-name {
+        font-weight: 800;
+        line-height: 1.05;
+        color: #0a1f44;
+      }
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: #071b37;
+        min-height: 390px;
+      }
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.52;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          #061a35 5%,
+          rgba(6, 26, 53, 0.86) 40%,
+          rgba(6, 26, 53, 0.15) 100%
+        );
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .stat-strip {
+        background: #fff;
+        border-bottom: 1px solid #e5edf6;
+        border-top: 1px solid #e5edf6;
+      }
+      .stat {
+        padding: 22px 12px;
+        text-align: center;
+      }
+      .stat + .stat {
+        border-left: 1px solid #dce5f0;
+      }
+      .icon-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 999px;
+        background: #eaf3ff;
+        color: #126fe8;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        font-weight: 800;
+      }
+      .feature-img {
+        height: 190px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .dark-section {
+        background: #061b38;
+        color: #fff;
+      }
+      .dark-section .section-title {
+        color: #fff;
+      }
+      .tabs {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        scrollbar-width: none;
+      }
+      .tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .tab {
+        white-space: nowrap;
+        border: 1px solid #cddceb;
+        border-radius: 999px;
+        padding: 0.55rem 0.9rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        background: #fff;
+        color: #263852;
+      }
+      .tab.active {
+        background: #126fe8;
+        color: #fff;
+        border-color: #126fe8;
+      }
+      .footer-bottom {
+        background: #04162d;
+        color: #fff;
+      }
+      .mobile-menu {
+        display: none;
+      }
+      .mobile-menu.open {
+        display: block;
+      }
+      .faq-answer {
+        display: none;
+      }
+      .faq.open .faq-answer {
+        display: block;
+      }
+      @media (max-width: 767px) {
+        .section {
+          padding: 48px 0;
+        }
+        .container-x {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .desktop-nav {
+          display: none;
+        }
+        .mobile-toggle {
+          display: block;
+        }
+        .hero {
+          min-height: 500px;
+        }
+        .hero-media {
+          opacity: 0.38;
+        }
+        .hero-overlay {
+          background: linear-gradient(
+            90deg,
+            #061a35 0%,
+            rgba(6, 26, 53, 0.88) 55%,
+            rgba(6, 26, 53, 0.45)
+          );
+        }
+        .stat-strip .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat + .stat {
+          border-left: 0;
+          border-top: 1px solid #dce5f0;
+        }
+        .stat {
+          padding: 16px 8px;
+        }
+      }
+      @media (min-width: 768px) {
+        .mobile-toggle {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scrollProgressBar" class="scroll-progress-bar" style="width: 0%;"></div>
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+      <div class="topbar">
+        <div class="container-x h-8 flex items-center justify-between text-xs">
+          <span class="font-medium text-slate-200">Your Growth Partner in Technology & Marketing</span>
+          <div class="hidden sm:flex items-center gap-4 text-slate-200">
+            <a href="tel:+919876543210" class="flex items-center gap-1.5 hover:text-white transition-colors" title="Call Us">
+              <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>+91 98765 43210</span>
+            </a>
+            <a href="mailto:hello@akentech.in" class="flex items-center gap-1.5 hover:text-white transition-colors" title="Email Us">
+              <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <span>hello@akentech.in</span>
+            </a>
+            <div class="flex items-center gap-2 pl-2 border-l border-slate-600/60">
+              <a href="https://www.linkedin.com/company/akentechsolution" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-sky-400 transition-colors p-1" title="LinkedIn" aria-label="LinkedIn">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/akentechsolution" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-pink-400 transition-colors p-1" title="Instagram" aria-label="Instagram">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/@akentechsolution" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-red-400 transition-colors p-1" title="YouTube" aria-label="YouTube">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-x navbar-container h-16 flex items-center justify-between gap-3">
+        <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0 group">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-400 flex items-center justify-center text-white shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform flex-shrink-0">
+            <svg class="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="flex flex-col leading-tight">
+            <span class="font-black text-sm sm:text-base tracking-tight text-slate-900 flex items-center">
+              AKEN TECH
+            </span>
+            <span class="text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-blue-600">
+              SOLUTIONS
+            </span>
+          </div>
+        </a>
+        <nav class="desktop-nav flex items-center gap-1.5 lg:gap-2">
+          <a class="nav-link" href="index.html">Home</a
+          ><a class="nav-link active" href="about.html">About</a
+          ><a class="nav-link" href="services.html">Services</a
+          ><a class="nav-link" href="products.html">Products</a
+          ><a class="nav-link" href="industries.html">Industries</a
+          ><a class="nav-link" href="portfolio.html">Portfolio</a
+          ><a class="nav-link" href="blog.html">Blog</a
+          ><a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <a
+            href="contact.html"
+            class="btn btn-primary text-xs hidden sm:inline-flex md:inline-flex whitespace-nowrap flex-shrink-0 px-3.5 py-2"
+            >Talk to an Expert →</a
+          ><button
+            type="button"
+            class="mobile-toggle text-2xl p-1 text-slate-800 hover:text-blue-600 transition-colors"
+            onclick="toggleMenu(event)"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+      <div
+        id="mobileMenu"
+        class="mobile-menu lg:hidden border-t bg-white px-5 pb-4"
+      >
+        <a
+          class="block py-3 border-b border-slate-100 font-semibold"
+          href="index.html"
+          >Home</a
+        ><a
+          class="block py-3 border-b border-slate-100 font-semibold text-blue-600"
+          href="about.html"
+          >About</a
+        ><a
+          class="block py-3 border-b border-slate-100 font-semibold"
+          href="services.html"
+          >Services</a
+        ><a
+          class="block py-3 border-b border-slate-100 font-semibold"
+          href="products.html"
+          >Products</a
+        ><a
+          class="block py-3 border-b border-slate-100 font-semibold"
+          href="industries.html"
+          >Industries</a
+        ><a
+          class="block py-3 border-b border-slate-100 font-semibold"
+          href="portfolio.html"
+          >Portfolio</a
+        ><a
+          class="block py-3 border-b border-slate-100 font-semibold"
+          href="blog.html"
+          >Blog</a
+        ><a
+          class="block py-3 border-b border-slate-100 font-semibold"
+          href="contact.html"
+          >Contact</a
+        ><a
+          href="contact.html"
+          class="btn btn-primary mt-4 w-full justify-center"
+          >Talk to an Expert →</a
+        >
+      </div>
+    </header>
+    <section class="hero">
+      <div
+        class="hero-media"
+        style="
+          background-image: url(&quot;https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80&quot;);
+        "
+      ></div>
+      <div class="hero-overlay"></div>
+      <div
+        class="container-x hero-content min-h-[390px] flex items-center py-16"
+      >
+        <div class="max-w-2xl text-white">
+          <div class="text-sm text-sky-300 mb-4">Home › About</div>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.02]">
+            About Aken Tech <span class="text-sky-400">Solution</span>
+          </h1>
+          <p class="text-lg text-slate-200 mt-5 max-w-xl">
+            We are a technology and digital marketing company helping businesses
+            and organizations grow with innovative, result-driven solutions.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-7">
+            <a class="btn btn-primary" href="contact.html">Our Story →</a
+            ><a class="btn btn-light" href="services.html"
+              >Explore Our Services →</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="stat-strip">
+      <div class="container-x grid grid-cols-2 md:grid-cols-4">
+        <div class="stat">
+          <div class="text-2xl font-extrabold text-blue-600">500+</div>
+          <div class="text-sm font-semibold">Happy Clients</div>
+        </div>
+        <div class="stat">
+          <div class="text-2xl font-extrabold text-blue-600">5+</div>
+          <div class="text-sm font-semibold">Years of Experience</div>
+        </div>
+        <div class="stat">
+          <div class="text-2xl font-extrabold text-blue-600">100+</div>
+          <div class="text-sm font-semibold">Projects Delivered</div>
+        </div>
+        <div class="stat">
+          <div class="text-2xl font-extrabold text-blue-600">4.8/5</div>
+          <div class="text-sm font-semibold">Client Satisfaction</div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container-x grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="eyebrow">OUR STORY</div>
+          <h2 class="section-title mt-2">From Ideas to Real Impact</h2>
+          <p class="text-slate-600 mt-5">
+            Aken Tech Solution was founded with a simple belief — technology can
+            create real opportunities for businesses, communities, and people.
+          </p>
+          <p class="text-slate-600 mt-4">
+            What started as a small team with big dreams has now grown into a
+            trusted technology partner for businesses across India and beyond.
+            We combine creativity, technology, and strategy to deliver solutions
+            that create measurable growth and long-term value.
+          </p>
+          <a class="btn btn-primary mt-6" href="contact.html">Our Journey →</a>
+        </div>
+        <img
+          class="rounded-xl w-full h-[360px] object-cover"
+          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+          alt="Modern office"
+        />
+      </div>
+    </section>
+    <section class="section bg-slate-50">
+      <div class="container-x grid md:grid-cols-2 gap-6">
+        <article class="card p-8 bg-blue-50">
+          <div class="icon-circle bg-blue-600 text-white flex items-center justify-center">
+            <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <h3 class="font-extrabold text-xl mt-4">Our Mission</h3>
+          <p class="text-slate-600 mt-2">
+            To empower businesses and organizations with innovative digital
+            solutions that drive growth, efficiency, and positive impact.
+          </p>
+        </article>
+        <article class="card p-8 bg-emerald-50">
+          <div class="icon-circle bg-emerald-600 text-white flex items-center justify-center">
+            <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+            </svg>
+          </div>
+          <h3 class="font-extrabold text-xl mt-4">Our Vision</h3>
+          <p class="text-slate-600 mt-2">
+            To be a trusted global technology partner, recognized for our
+            innovation, customer focus, and commitment to a better tomorrow.
+          </p>
+        </article>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container-x">
+        <div class="eyebrow">OUR VALUES</div>
+        <h2 class="section-title mt-2">What Drives Us</h2>
+        <div class="grid md:grid-cols-4 gap-5 mt-8">
+          <article class="card p-6 text-center">
+            <div class="icon-circle mx-auto bg-blue-50 text-blue-600 flex items-center justify-center">
+              <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M9 18h6"/>
+                <path d="M10 22h4"/>
+                <path d="M12 2a7 7 0 0 0-4 12.7v1.3a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-1.3A7 7 0 0 0 12 2z"/>
+              </svg>
+            </div>
+            <h3 class="font-extrabold mt-4">Innovation</h3>
+            <p class="text-sm text-slate-600 mt-2">
+              We embrace new ideas and technologies.
+            </p>
+          </article>
+          <article class="card p-6 text-center">
+            <div class="icon-circle mx-auto bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <h3 class="font-extrabold mt-4">Integrity</h3>
+            <p class="text-sm text-slate-600 mt-2">
+              We believe in transparency and ethical practices.
+            </p>
+          </article>
+          <article class="card p-6 text-center">
+            <div class="icon-circle mx-auto bg-amber-50 text-amber-600 flex items-center justify-center">
+              <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="6"/>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+            </div>
+            <h3 class="font-extrabold mt-4">Client Success</h3>
+            <p class="text-sm text-slate-600 mt-2">Your goals are our goals.</p>
+          </article>
+          <article class="card p-6 text-center">
+            <div class="icon-circle mx-auto bg-rose-50 text-rose-600 flex items-center justify-center">
+              <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3 class="font-extrabold mt-4">Social Impact</h3>
+            <p class="text-sm text-slate-600 mt-2">
+              We use technology to create a positive difference.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="dark-section section">
+      <div class="container-x grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="eyebrow text-sky-300">WHY CHOOSE AKEN TECH SOLUTION</div>
+          <h2 class="section-title mt-2">
+            More Than a Service Provider,<br />A Growth Partner
+          </h2>
+          <p class="text-slate-300 mt-4">
+            We don't just deliver solutions, we build long-term partnerships.
+            Our team works closely with you to understand your goals and turn
+            them into measurable results.
+          </p>
+          <a href="contact.html" class="btn btn-primary mt-6">Work With Us →</a>
+        </div>
+        <div class="grid gap-5">
+          <div class="flex gap-4">
+            <div class="icon-circle shrink-0 bg-blue-600 text-white flex items-center justify-center">
+              <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Industry Expertise</h3>
+              <p class="text-slate-300 text-sm mt-1">
+                Deep knowledge across multiple industries
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="icon-circle shrink-0 bg-blue-600 text-white flex items-center justify-center">
+              <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Customized Solutions</h3>
+              <p class="text-slate-300 text-sm mt-1">
+                Tailored to your unique business needs
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="icon-circle shrink-0 bg-blue-600 text-white flex items-center justify-center">
+              <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h3 class="font-extrabold">End-to-End Support</h3>
+              <p class="text-slate-300 text-sm mt-1">
+                From strategy to execution and beyond
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="icon-circle shrink-0 bg-blue-600 text-white flex items-center justify-center">
+              <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h3 class="font-extrabold">Long-Term Partnership</h3>
+              <p class="text-slate-300 text-sm mt-1">
+                We grow with you, not just for a project
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container-x">
+        <div class="eyebrow">OUR TEAM</div>
+        <h2 class="section-title mt-2">Meet the People Behind Aken Tech</h2>
+        <div class="grid md:grid-cols-3 gap-5 mt-8">
+          <article class="card overflow-hidden group">
+            <img
+              class="h-52 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80"
+              alt="Sunil Sharma"
+            />
+            <div class="p-5 flex flex-col justify-between">
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-900">Sunil Sharma</h3>
+                <p class="text-xs font-semibold text-blue-600 mt-0.5">
+                  Co-Founder & Business Head
+                </p>
+                <p class="text-xs text-slate-500 mt-2">
+                  Driving strategic growth, partnerships, and high-impact digital initiatives for global clients.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <a
+                    href="https://www.linkedin.com/company/akentechsolution"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="Connect on LinkedIn"
+                    aria-label="Sunil Sharma on LinkedIn"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/akentechsolution"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-8 h-8 rounded-lg bg-pink-50 text-pink-600 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="Follow on Instagram"
+                    aria-label="Sunil Sharma on Instagram"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  </a>
+                  <a
+                    href="mailto:hello@akentech.in"
+                    class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="Direct Email"
+                    aria-label="Email Sunil Sharma"
+                  >
+                    <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </a>
+                </div>
+                <a
+                  href="https://www.linkedin.com/company/akentechsolution"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-md transition-colors"
+                >
+                  <span>Connect</span>
+                  <svg class="w-3 h-3 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="card overflow-hidden group">
+            <img
+              class="h-52 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80"
+              alt="Shivshant Dubey"
+            />
+            <div class="p-5 flex flex-col justify-between">
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-900">Shivshant Dubey</h3>
+                <p class="text-xs font-semibold text-blue-600 mt-0.5">
+                  Co-Founder & Technical Head
+                </p>
+                <p class="text-xs text-slate-500 mt-2">
+                  Leading software architecture, CRM automation, AI agent pipelines, and enterprise engineering.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <a
+                    href="https://www.linkedin.com/company/akentechsolution"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="Connect on LinkedIn"
+                    aria-label="Shivshant Dubey on LinkedIn"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/akentechsolution"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-8 h-8 rounded-lg bg-pink-50 text-pink-600 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="Follow on Instagram"
+                    aria-label="Shivshant Dubey on Instagram"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  </a>
+                  <a
+                    href="mailto:hello@akentech.in"
+                    class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="Direct Email"
+                    aria-label="Email Shivshant Dubey"
+                  >
+                    <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </a>
+                </div>
+                <a
+                  href="https://www.linkedin.com/company/akentechsolution"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-md transition-colors"
+                >
+                  <span>Connect</span>
+                  <svg class="w-3 h-3 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="card overflow-hidden group">
+            <img
+              class="h-52 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=700&q=80"
+              alt="Aken Tech Expert Team"
+            />
+            <div class="p-5 flex flex-col justify-between">
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-900">Our Core Team</h3>
+                <p class="text-xs font-semibold text-blue-600 mt-0.5">
+                  Developers | Marketers | Designers
+                </p>
+                <p class="text-xs text-slate-500 mt-2">
+                  A multi-disciplinary squad delivering end-to-end digital solutions, custom applications, and ad campaigns.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <a
+                    href="https://www.linkedin.com/company/akentechsolution"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="LinkedIn Company Page"
+                    aria-label="Aken Tech on LinkedIn"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/akentechsolution"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-8 h-8 rounded-lg bg-pink-50 text-pink-600 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="Follow on Instagram"
+                    aria-label="Aken Tech on Instagram"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  </a>
+                  <a
+                    href="mailto:hello@akentech.in"
+                    class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white flex items-center justify-center transition-all duration-200"
+                    title="Team Contact"
+                    aria-label="Email Aken Tech Team"
+                  >
+                    <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </a>
+                </div>
+                <a
+                  href="https://www.linkedin.com/company/akentechsolution"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-md transition-colors"
+                >
+                  <span>Follow</span>
+                  <svg class="w-3 h-3 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <section class="dark-section py-10">
+        <div
+          class="container-x flex flex-col lg:flex-row items-start lg:items-center justify-between gap-7"
+        >
+          <div>
+            <div class="eyebrow text-sky-300">READY TO GROW?</div>
+            <h2 class="text-2xl md:text-3xl font-extrabold mt-1">
+              Turn Your Goals Into Real Results
+            </h2>
+            <p class="text-slate-300 mt-2">
+              Get a free consultation and discover how Aken Tech Solution can
+              help you grow faster.
+            </p>
+          </div>
+          <a href="contact.html" class="btn btn-light">Get Free Consultation</a>
+        </div>
+      </section>
+      <div class="bg-white">
+        <div class="container-x py-12 grid md:grid-cols-4 gap-10">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="logo-mark">AT</span
+              ><span class="logo-name text-sm">Aken Tech Solution</span>
+            </div>
+            <p class="text-sm text-slate-600">
+              Aken Tech Solution helps businesses & organizations grow with
+              technology, automation and performance marketing.
+            </p>
+            <div class="flex items-center gap-2.5 mt-5">
+              <a href="https://www.linkedin.com/company/akentechsolution" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-600 flex items-center justify-center transition-all duration-200" title="LinkedIn" aria-label="LinkedIn">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/akentechsolution" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-pink-600 hover:text-white text-slate-600 flex items-center justify-center transition-all duration-200" title="Instagram" aria-label="Instagram">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/@akentechsolution" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-red-600 hover:text-white text-slate-600 flex items-center justify-center transition-all duration-200" title="YouTube" aria-label="YouTube">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+              <a href="https://www.facebook.com/akentechsolution" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-blue-700 hover:text-white text-slate-600 flex items-center justify-center transition-all duration-200" title="Facebook" aria-label="Facebook">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-extrabold mb-3">Quick Links</h3>
+            <div class="space-y-2 text-sm text-slate-600">
+              <a class="block hover:text-blue-600 transition-colors" href="index.html">Home</a>
+              <a class="block hover:text-blue-600 transition-colors" href="about.html">About Us</a>
+              <a class="block hover:text-blue-600 transition-colors" href="services.html">Services</a>
+              <a class="block hover:text-blue-600 transition-colors" href="products.html">Products</a>
+              <a class="block hover:text-blue-600 transition-colors" href="industries.html">Industries</a>
+              <a class="block hover:text-blue-600 transition-colors" href="portfolio.html">Portfolio</a>
+              <a class="block hover:text-blue-600 transition-colors" href="blog.html">Blog</a>
+              <a class="block hover:text-blue-600 transition-colors" href="contact.html">Contact</a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-extrabold mb-3">Our Services</h3>
+            <div class="space-y-2 text-sm text-slate-600">
+              <div>Performance Marketing</div>
+              <div>Real Estate Solutions</div>
+              <div>Web Development</div>
+              <div>Custom Software & CRM</div>
+              <div>WhatsApp Automation</div>
+              <div>AI Calling & AI Agents</div>
+              <div>NGO Digital Solutions</div>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-extrabold mb-3">Contact Us</h3>
+            <div class="space-y-3 text-sm text-slate-600">
+              <a href="tel:+919876543210" class="flex items-center gap-2.5 hover:text-blue-600 transition-colors">
+                <svg class="w-4 h-4 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <span>+91 98765 43210</span>
+              </a>
+              <a href="mailto:hello@akentech.in" class="flex items-center gap-2.5 hover:text-blue-600 transition-colors">
+                <svg class="w-4 h-4 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <span>hello@akentech.in</span>
+              </a>
+              <div class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>Thane, Mumbai, India</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                <span>Serving Clients Worldwide</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div
+          class="container-x py-4 flex flex-col sm:flex-row justify-between gap-2 text-xs"
+        >
+          <span>© 2025 Aken Tech Solution. All rights reserved.</span>
+          <div class="flex gap-6">
+            <span>Privacy Policy</span><span>Terms & Conditions</span
+            ><span>Sitemap</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function updateScrollProgress() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        const bar = document.getElementById("scrollProgressBar");
+        if (bar) {
+          bar.style.width = Math.min(Math.max(progress, 0), 100) + "%";
+        }
+      }
+      window.addEventListener("scroll", updateScrollProgress, { passive: true });
+      window.addEventListener("resize", updateScrollProgress);
+      document.addEventListener("DOMContentLoaded", updateScrollProgress);
+
+      function initScrollAnimations() {
+        if (!("IntersectionObserver" in window)) return;
+        const targets = document.querySelectorAll("section:not(.hero), .card");
+        targets.forEach((el) => el.classList.add("reveal"));
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.08,
+            rootMargin: "0px 0px -30px 0px",
+          }
+        );
+
+        targets.forEach((el) => observer.observe(el));
+      }
+      document.addEventListener("DOMContentLoaded", initScrollAnimations);
+
+      document.addEventListener("click", (e) => {
+        const faq = e.target.closest(".faq");
+        if (faq) {
+          faq.classList.toggle("open");
+          const i = faq.querySelector(".faq-icon");
+          if (i) i.textContent = faq.classList.contains("open") ? "−" : "+";
+        }
+        const tab = e.target.closest("[data-filter]");
+        if (tab) {
+          const g = tab.dataset.filterGroup;
+          document
+            .querySelectorAll(`[data-filter-tab="${g}"]`)
+            .forEach((x) => x.classList.remove("active"));
+          tab.classList.add("active");
+          const v = tab.dataset.filter;
+          document
+            .querySelectorAll(`[data-filter-item="${g}"]`)
+            .forEach((x) =>
+              x.classList.toggle(
+                "hidden",
+                v !== "all" && x.dataset.category !== v,
+              ),
+            );
+        }
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const s = document.querySelector("#blogSearch");
+        if (s)
+          s.addEventListener("input", () => {
+            let q = s.value.toLowerCase();
+            document
+              .querySelectorAll("[data-blog]")
+              .forEach((x) =>
+                x.classList.toggle(
+                  "hidden",
+                  q && !x.innerText.toLowerCase().includes(q),
+                ),
+              );
+          });
+        const f = document.querySelector("#contactForm");
+        if (f)
+          f.addEventListener("submit", (e) => {
+            e.preventDefault();
+            document.querySelector("#formMsg").classList.remove("hidden");
+          });
+      });
+    </script>
+  </body>
+</html>

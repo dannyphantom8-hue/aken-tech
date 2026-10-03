@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1f44">
+  <meta name="description" content="Contact Aken Tech Solution for web development, digital marketing, automation and custom software solutions.">
+  <title>Contact Us | Aken Tech Solution</title>
+
+  <!-- Tailwind CSS CDN: suitable for a simple static/GitHub Pages project. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#0A1F44",
+            deepnavy: "#061B38",
+            brand: "#126FE8",
+            pale: "#EAF3FF"
+          },
+          boxShadow: {
+            soft: "0 8px 28px rgba(10,31,68,.08)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    summary { list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    details[open] .faq-plus { transform: rotate(45deg); }
+    .hero-bg {
+      background-image:
+        linear-gradient(90deg, rgba(4,22,45,.98) 0%, rgba(4,22,45,.88) 45%, rgba(4,22,45,.30) 100%),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2000&q=85");
+      background-position: center;
+      background-size: cover;
+    }
+    .cta-bg {
+      background-image:
+        linear-gradient(90deg, rgba(4,22,45,.97), rgba(4,22,45,.72)),
+        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=85");
+      background-position: center;
+      background-size: cover;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-slate-800 antialiased">
+  <!-- Top contact bar -->
+  <div class="bg-navy text-white">
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-2 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <p class="text-slate-200">Your Growth Partner in Technology &amp; Marketing</p>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <a class="hover:text-sky-300" href="tel:+919876543210">☎ +91 98765 43210</a>
+        <a class="hover:text-sky-300" href="mailto:hello@akentech.in">✉ hello@akentech.in</a>
+        <a aria-label="LinkedIn" class="font-bold hover:text-sky-300" href="https://www.linkedin.com/company/akentechsolution" target="_blank" rel="noopener noreferrer">in</a>
+        <a aria-label="Instagram" class="hover:text-sky-300" href="https://www.instagram.com/akentechsolution" target="_blank" rel="noopener noreferrer">◎</a>
+        <a aria-label="YouTube" class="hover:text-sky-300" href="https://www.youtube.com/@akentechsolution" target="_blank" rel="noopener noreferrer">▶</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header. Native details provides a no-JavaScript mobile menu. -->
+  <header class="sticky top-0 z-40 border-b border-slate-100 bg-white/95 shadow-sm backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="index.html" class="flex shrink-0 items-center gap-2" aria-label="Aken Tech Solution home">
+        <span class="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-blue-800 via-blue-600 to-sky-400 text-xl font-black italic tracking-tighter text-white shadow-md">AT</span>
+        <span class="leading-tight">
+          <span class="block text-sm font-black tracking-tight text-navy sm:text-base">AKEN TECH</span>
+          <span class="block text-[10px] font-bold uppercase tracking-[.2em] text-brand">Solutions</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+        <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:text-brand" href="index.html">Home</a>
+        <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:text-brand" href="about.html">About</a>
+        <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:text-brand" href="services.html">Services</a>
+        <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:text-brand" href="products.html">Products</a>
+        <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:text-brand" href="industries.html">Industries</a>
+        <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:text-brand" href="portfolio.html">Portfolio</a>
+        <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:text-brand" href="blog.html">Blog</a>
+        <a class="rounded-lg bg-blue-50 px-3 py-2 text-sm font-bold text-brand" href="contact.html" aria-current="page">Contact</a>
+      </nav>
+
+      <div class="hidden shrink-0 sm:block">
+        <a href="#contact-form" class="inline-flex items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200">Talk to an Expert <span class="ml-2" aria-hidden="true">→</span></a>
+      </div>
+
+      <details class="relative lg:hidden">
+        <summary class="cursor-pointer rounded-lg border border-slate-200 px-3 py-2 text-xl text-navy hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-blue-100" aria-label="Open navigation menu">☰</summary>
+        <nav class="absolute right-0 top-14 z-50 w-64 rounded-xl border border-slate-200 bg-white p-3 shadow-xl" aria-label="Mobile navigation">
+          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="index.html">Home</a>
+          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="about.html">About</a>
+          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="services.html">Services</a>
+          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="products.html">Products</a>
+          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="industries.html">Industries</a>
+          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="portfolio.html">Portfolio</a>
+          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="blog.html">Blog</a>
+          <a class="block rounded-lg bg-blue-50 px-4 py-3 font-bold text-brand" href="contact.html" aria-current="page">Contact</a>
+          <a class="mt-2 block rounded-lg bg-brand px-4 py-3 text-center font-bold text-white" href="#contact-form">Talk to an Expert →</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero-bg relative isolate overflow-hidden">
+      <div class="mx-auto flex min-h-[390px] max-w-7xl items-center px-4 py-16 sm:px-6 lg:min-h-[430px] lg:px-8">
+        <div class="max-w-2xl text-white">
+          <p class="mb-5 text-sm font-medium text-sky-300"><a class="hover:underline" href="index.html">Home</a> <span aria-hidden="true">›</span> Contact</p>
+          <h1 class="text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">Let’s Build Something Great <span class="text-sky-400">Together</span></h1>
+          <p class="mt-5 max-w-xl text-base leading-7 text-slate-200 sm:text-lg">Have a question, project idea, or need a consultation? We are here to help you grow.</p>
+          <div class="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm font-medium text-white">
+            <span class="flex items-center gap-2"><span class="text-sky-400">✓</span> Quick Response</span>
+            <span class="flex items-center gap-2"><span class="text-sky-400">✓</span> Expert Guidance</span>
+            <span class="flex items-center gap-2"><span class="text-sky-400">✓</span> No Obligation</span>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#contact-form" class="rounded-lg bg-brand px-5 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">Contact Us Now →</a>
+            <a href="services.html" class="rounded-lg border border-white/40 bg-white/10 px-5 py-3 font-bold text-white backdrop-blur transition hover:bg-white/20">Explore Our Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact cards -->
+    <section class="border-b border-slate-100 bg-white py-7 sm:py-9" aria-label="Contact options">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
+        <a href="tel:+919876543210" class="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft transition duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-100">
+          <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-blue-50 text-2xl text-brand transition group-hover:bg-brand group-hover:text-white" aria-hidden="true">☎</span>
+          <h2 class="mt-4 font-extrabold text-navy">Call Us</h2>
+          <p class="mt-2 text-sm font-bold text-blue-900">+91 98765 43210</p>
+          <p class="mt-1 text-xs text-slate-500">Mon–Sat, 9 AM–7 PM</p>
+        </a>
+        <a href="mailto:hello@akentech.in" class="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft transition duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-100">
+          <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-blue-50 text-2xl text-brand transition group-hover:bg-brand group-hover:text-white" aria-hidden="true">✉</span>
+          <h2 class="mt-4 font-extrabold text-navy">Email Us</h2>
+          <p class="mt-2 break-words text-sm font-bold text-blue-900">hello@akentech.in</p>
+          <p class="mt-1 text-xs text-slate-500">We aim to reply within 24 hours</p>
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Thane%2C+Maharashtra%2C+India" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft transition duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-100">
+          <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-blue-50 text-2xl text-brand transition group-hover:bg-brand group-hover:text-white" aria-hidden="true">⌖</span>
+          <h2 class="mt-4 font-extrabold text-navy">Visit Our Office</h2>
+          <p class="mt-2 text-sm font-bold text-blue-900">Thane, Maharashtra, India</p>
+          <p class="mt-1 text-xs font-semibold text-brand">View on Map →</p>
+        </a>
+        <a href="https://wa.me/919876543210?text=Hi%20Aken%20Tech%20Solution%2C%20I%20would%20like%20to%20ask%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft transition duration-200 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-100">
+          <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-emerald-50 text-2xl text-emerald-600 transition group-hover:bg-emerald-600 group-hover:text-white" aria-hidden="true">◉</span>
+          <h2 class="mt-4 font-extrabold text-navy">Chat on WhatsApp</h2>
+          <p class="mt-2 text-sm font-bold text-emerald-700">+91 98765 43210</p>
+          <p class="mt-1 text-xs text-slate-500">Quick online support</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Form and map -->
+    <section id="contact-form" class="scroll-mt-28 py-16 sm:py-20">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-[.18em] text-brand">Send us a message</p>
+          <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">Get in Touch</h2>
+          <p class="mt-3 max-w-xl leading-7 text-slate-600">Tell us a little about your goals and requirements. Our team can help you explore the next steps.</p>
+
+          <!-- IMPORTANT: Replace YOUR_FORM_ID with your real Formspree form ID before publishing.
+               HTML alone cannot deliver form submissions without a configured endpoint. -->
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="mt-8 grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="name" class="mb-2 block text-sm font-bold text-slate-700">Your Name <span class="text-red-600">*</span></label>
+              <input id="name" name="name" type="text" autocomplete="name" required minlength="2" placeholder="Enter your name" class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-4 focus:ring-blue-100">
+            </div>
+            <div>
+              <label for="email" class="mb-2 block text-sm font-bold text-slate-700">Your Email <span class="text-red-600">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required
+                 pattern="[A-Za-z0-9.!#$%&amp;'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}"
+                 title="Enter a valid email address, such as name@example.com."
+                 placeholder="Enter your email"
+                 class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-4 focus:ring-blue-100">
+            </div>
+            <div>
+              <label for="phone" class="mb-2 block text-sm font-bold text-slate-700">Phone Number <span class="text-red-600">*</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required
+                 inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}"
+                 title="Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9. Do not include +91 or spaces."
+                 placeholder="Enter 10-digit mobile number"
+                 class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-4 focus:ring-blue-100">
+            </div>
+            <div>
+              <label for="service" class="mb-2 block text-sm font-bold text-slate-700">Service Interested In</label>
+              <select id="service" name="service" class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-brand focus:ring-4 focus:ring-blue-100">
+                <option value="">Select a service</option>
+                <option>Web Development</option>
+                <option>Digital Marketing</option>
+                <option>Automation</option>
+                <option>Custom Software &amp; CRM</option>
+                <option>AI Calling &amp; AI Agents</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="message" class="mb-2 block text-sm font-bold text-slate-700">Your Message <span class="text-red-600">*</span></label>
+              <textarea id="message" name="message" rows="5" required minlength="10" placeholder="Tell us about your requirements..." class="w-full resize-y rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-4 focus:ring-blue-100"></textarea>
+            </div>
+            <input type="hidden" name="_subject" value="New Contact Enquiry — Aken Tech Solution">
+            <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-5 py-3.5 font-bold text-white shadow-md transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200 sm:col-span-2">Send Message <span aria-hidden="true">→</span></button>
+            <p class="text-xs leading-5 text-slate-500 sm:col-span-2">Your details will be used to respond to your enquiry. Configure the form endpoint before accepting real submissions.</p>
+          </form>
+        </div>
+
+        <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft">
+          <div class="flex flex-wrap items-center justify-between gap-3 p-5 sm:p-6">
+            <div>
+              <h3 class="font-extrabold text-navy">Aken Tech Solution</h3>
+              <p class="mt-1 text-sm text-slate-600">Thane, Maharashtra, India</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Thane%2C+Maharashtra%2C+India" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-blue-50 px-3 py-2 text-sm font-bold text-brand hover:bg-blue-100">Open in Maps ↗</a>
+          </div>
+          <iframe
+            title="Google Map showing Thane, Maharashtra, India"
+            src="https://www.google.com/maps?q=Thane%2C%20Maharashtra%2C%20India&output=embed"
+            width="100%"
+            height="390"
+            style="border:0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <div class="border-t border-slate-100 bg-slate-50 px-5 py-4 text-sm text-slate-600">
+            Please confirm the exact office address before publishing this map as your business location.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why contact us -->
+    <section class="bg-slate-50 py-16 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-extrabold uppercase tracking-[.18em] text-brand">Why contact us?</p>
+        <div class="mt-2 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 class="text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">We’re Here to Help You Grow</h2>
+            <p class="mt-3 max-w-2xl leading-7 text-slate-600">Whether you need a website, custom software, automation or digital marketing, start with a conversation about your goals.</p>
+          </div>
+        </div>
+        <div class="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-brand" aria-hidden="true">▣</span>
+            <h3 class="mt-4 font-extrabold text-navy">Free Consultation</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Discuss your goals and understand possible next steps before deciding.</p>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-brand" aria-hidden="true">⚙</span>
+            <h3 class="mt-4 font-extrabold text-navy">Tailored Solutions</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Explore solutions shaped around your requirements and business workflow.</p>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-brand" aria-hidden="true">♧</span>
+            <h3 class="mt-4 font-extrabold text-navy">Expert Team</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Connect with a team to discuss technology and marketing requirements.</p>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-brand" aria-hidden="true">↗</span>
+            <h3 class="mt-4 font-extrabold text-navy">Long-Term Partnership</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Plan for ongoing improvements and support that fit your needs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="py-16 sm:py-20">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-[.18em] text-brand">Frequently asked questions</p>
+          <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">Your Questions, Answered</h2>
+          <div class="mt-7 space-y-3">
+            <details open class="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-bold text-navy focus:outline-none">
+                <span>Do you offer free consultation?</span>
+                <span class="faq-plus text-xl font-normal text-brand transition-transform" aria-hidden="true">+</span>
+              </summary>
+              <p class="pt-3 text-sm leading-6 text-slate-600">You can contact our team to discuss your requirements and explore suitable solutions for your business.</p>
+            </details>
+            <details class="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-bold text-navy focus:outline-none">
+                <span>How long does a project take?</span>
+                <span class="faq-plus text-xl font-normal text-brand transition-transform" aria-hidden="true">+</span>
+              </summary>
+              <p class="pt-3 text-sm leading-6 text-slate-600">Timelines depend on the project scope, requirements, feedback cycles and delivery plan. We can discuss an estimate after understanding your needs.</p>
+            </details>
+            <details class="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-bold text-navy focus:outline-none">
+                <span>Do you provide ongoing support?</span>
+                <span class="faq-plus text-xl font-normal text-brand transition-transform" aria-hidden="true">+</span>
+              </summary>
+              <p class="pt-3 text-sm leading-6 text-slate-600">Support and maintenance options can be discussed according to the solution, scope and service arrangement.</p>
+            </details>
+            <details class="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-bold text-navy focus:outline-none">
+                <span>Can you work with international clients?</span>
+                <span class="faq-plus text-xl font-normal text-brand transition-transform" aria-hidden="true">+</span>
+              </summary>
+              <p class="pt-3 text-sm leading-6 text-slate-600">Contact us with your location, project details and preferred communication times to discuss your requirements.</p>
+            </details>
+          </div>
+        </div>
+
+        <aside class="flex flex-col items-start justify-center rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-sky-50 p-8 sm:p-10">
+          <span class="grid h-16 w-16 place-items-center rounded-2xl bg-white text-3xl text-brand shadow-sm" aria-hidden="true">☏</span>
+          <h3 class="mt-6 text-2xl font-extrabold text-navy">Still Have Questions?</h3>
+          <p class="mt-3 max-w-md leading-7 text-slate-600">Our team is ready to hear about your requirements. Choose the contact method that works for you.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact-form" class="rounded-lg bg-brand px-5 py-3 font-bold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200">Talk to an Expert →</a>
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-slate-300 bg-white px-5 py-3 font-bold text-navy transition hover:border-emerald-400 hover:text-emerald-700">WhatsApp Us</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-bg">
+      <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 px-4 py-14 sm:px-6 md:flex-row md:items-center lg:px-8 lg:py-16">
+        <div class="max-w-2xl text-white">
+          <p class="text-xs font-extrabold uppercase tracking-[.18em] text-sky-300">Ready to grow?</p>
+          <h2 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Ready to Start Your Project?</h2>
+          <p class="mt-3 leading-7 text-slate-200">Let’s turn your ideas into practical solutions. Get in touch with Aken Tech Solution today.</p>
+        </div>
+        <a href="#contact-form" class="shrink-0 rounded-lg bg-brand px-6 py-3.5 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">Contact Us Now →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-navy text-white">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+      <div>
+        <a href="index.html" class="inline-flex items-center gap-3" aria-label="Aken Tech Solution home">
+          <span class="text-3xl font-black italic tracking-tighter text-sky-300">AT</span>
+          <span class="font-extrabold leading-tight">Aken Tech Solution<span class="mt-1 block text-[10px] font-semibold uppercase tracking-[.18em] text-sky-300">Innovate · Develop · Deliver</span></span>
+        </a>
+        <p class="mt-4 text-sm leading-6 text-slate-300">Helping businesses explore technology, automation and performance marketing solutions.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a aria-label="LinkedIn" href="https://www.linkedin.com/company/akentechsolution" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-lg border border-white/15 bg-white/5 font-bold transition hover:bg-brand">in</a>
+          <a aria-label="Instagram" href="https://www.instagram.com/akentechsolution" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-lg border border-white/15 bg-white/5 transition hover:bg-pink-600">◎</a>
+          <a aria-label="YouTube" href="https://www.youtube.com/@akentechsolution" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-lg border border-white/15 bg-white/5 transition hover:bg-red-600">▶</a>
+          <a aria-label="Facebook" href="https://www.facebook.com/akentechsolution" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-lg border border-white/15 bg-white/5 font-bold transition hover:bg-blue-700">f</a>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-extrabold">Quick Links</h2>
+        <ul class="mt-4 space-y-2 text-sm text-slate-300">
+          <li><a class="hover:text-sky-300" href="index.html">Home</a></li>
+          <li><a class="hover:text-sky-300" href="about.html">About Us</a></li>
+          <li><a class="hover:text-sky-300" href="services.html">Services</a></li>
+          <li><a class="hover:text-sky-300" href="products.html">Products</a></li>
+          <li><a class="hover:text-sky-300" href="industries.html">Industries</a></li>
+          <li><a class="hover:text-sky-300" href="portfolio.html">Portfolio</a></li>
+          <li><a class="hover:text-sky-300" href="blog.html">Blog</a></li>
+          <li><a class="text-sky-300" href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-extrabold">Our Services</h2>
+        <ul class="mt-4 space-y-2 text-sm text-slate-300">
+          <li>Performance Marketing</li>
+          <li>Real Estate Solutions</li>
+          <li>Web Development</li>
+          <li>Custom Software &amp; CRM</li>
+          <li>WhatsApp Automation</li>
+          <li>AI Calling &amp; AI Agents</li>
+          <li>NGO Digital Solutions</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-extrabold">Contact Us</h2>
+        <ul class="mt-4 space-y-4 text-sm text-slate-300">
+          <li class="flex gap-3"><span aria-hidden="true">☎</span><a class="hover:text-sky-300" href="tel:+919876543210">+91 98765 43210</a></li>
+          <li class="flex gap-3"><span aria-hidden="true">✉</span><a class="break-all hover:text-sky-300" href="mailto:hello@akentech.in">hello@akentech.in</a></li>
+          <li class="flex gap-3"><span aria-hidden="true">⌖</span><a class="hover:text-sky-300" href="https://www.google.com/maps/search/?api=1&query=Thane%2C+Maharashtra%2C+India" target="_blank" rel="noopener noreferrer">Thane, Maharashtra, India</a></li>
+          <li class="flex gap-3"><span aria-hidden="true">◎</span><span>Serving clients worldwide</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 bg-[#04162D]">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 text-xs text-slate-300 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+        <p>© 2026 Aken Tech Solution. All rights reserved.</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a class="hover:text-white" href="privacy-policy.html">Privacy Policy</a>
+          <a class="hover:text-white" href="terms.html">Terms &amp; Conditions</a>
+          <a class="hover:text-white" href="sitemap.html">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Keep the Indian mobile field to at most 10 digits.
+    const phoneInput = document.getElementById("phone");
+    if (phoneInput) {
+      phoneInput.addEventListener("input", () => {
+        phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 10);
+      });
+    }
+
+    // Require an email with a dotted domain and alphabetic suffix:
+    // e.g. person@example.com, person@company.in, or person@example.co.uk.
+    const emailInput = document.getElementById("email");
+    const contactForm = emailInput ? emailInput.closest("form") : null;
+    const strictEmailPattern = /^[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:\.[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)*\.[A-Z]{2,}$/i;
+
+    function validateEmail() {
+      if (!emailInput) return true;
+      const value = emailInput.value.trim();
+      const valid = value === "" ? false : strictEmailPattern.test(value);
+      emailInput.setCustomValidity(
+        valid || value === ""
+          ? ""
+          : "Enter a valid email such as name@example.com. A dotted domain ending in at least 2 letters is required."
+      );
+      return valid;
+    }
+
+    if (emailInput) {
+      emailInput.addEventListener("input", validateEmail);
+      emailInput.addEventListener("blur", validateEmail);
+    }
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", (event) => {
+        if (!validateEmail()) {
+          event.preventDefault();
+          emailInput.reportValidity();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
