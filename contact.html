@@ -46,6 +46,34 @@
       background-position: center;
       background-size: cover;
     }
+
+    /* Reliable touch-friendly mobile navigation; scoped to this header only. */
+    .mobile-navigation { position: relative; }
+    .mobile-menu-button { list-style: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    .mobile-menu-button::-webkit-details-marker { display: none; }
+    .menu-close-icon { display: none; }
+    .mobile-navigation[open] .menu-open-icon { display: none; }
+    .mobile-navigation[open] .menu-close-icon { display: inline; }
+    .mobile-navigation-panel { display: none; }
+    .mobile-navigation[open] .mobile-navigation-panel { display: block; }
+    @media (max-width: 1023px) {
+      .mobile-navigation-panel {
+        position: fixed;
+        top: var(--mobile-menu-top, 112px);
+        right: max(12px, env(safe-area-inset-right));
+        z-index: 9999;
+        width: min(320px, calc(100vw - 24px));
+        max-height: calc(100dvh - var(--mobile-menu-top, 112px) - 12px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      .mobile-navigation-link { min-height: 46px; }
+    }
+    @media (min-width: 1024px) {
+      .mobile-navigation { display: none !important; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -71,11 +99,15 @@
   <!-- Header. Native details provides a no-JavaScript mobile menu. -->
   <header class="sticky top-0 z-40 border-b border-slate-100 bg-white/95 shadow-sm backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-      <a href="index.html" class="flex shrink-0 items-center gap-2" aria-label="Aken Tech Solution home">
-        <span class="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-blue-800 via-blue-600 to-sky-400 text-xl font-black italic tracking-tighter text-white shadow-md">AT</span>
-        <span class="leading-tight">
-          <span class="block text-sm font-black tracking-tight text-navy sm:text-base">AKEN TECH</span>
-          <span class="block text-[10px] font-bold uppercase tracking-[.2em] text-brand">Solutions</span>
+      <a href="index.html" class="flex min-w-0 shrink-0 items-center gap-2.5 group" aria-label="Aken Tech Solution home">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-400 text-white shadow-md shadow-blue-500/25 transition-transform group-hover:scale-105 sm:h-11 sm:w-11" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </span>
+        <span class="min-w-0 leading-tight">
+          <span class="block whitespace-nowrap text-sm font-black tracking-tight text-slate-900 sm:text-base">AKEN TECH</span>
+          <span class="block whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-blue-600 sm:text-[11px]">SOLUTIONS</span>
         </span>
       </a>
 
@@ -94,18 +126,21 @@
         <a href="#contact-form" class="inline-flex items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200">Talk to an Expert <span class="ml-2" aria-hidden="true">→</span></a>
       </div>
 
-      <details class="relative lg:hidden">
-        <summary class="cursor-pointer rounded-lg border border-slate-200 px-3 py-2 text-xl text-navy hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-blue-100" aria-label="Open navigation menu">☰</summary>
-        <nav class="absolute right-0 top-14 z-50 w-64 rounded-xl border border-slate-200 bg-white p-3 shadow-xl" aria-label="Mobile navigation">
-          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="index.html">Home</a>
-          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="about.html">About</a>
-          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="services.html">Services</a>
-          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="products.html">Products</a>
-          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="industries.html">Industries</a>
-          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="portfolio.html">Portfolio</a>
-          <a class="block rounded-lg px-4 py-3 font-semibold hover:bg-blue-50" href="blog.html">Blog</a>
-          <a class="block rounded-lg bg-blue-50 px-4 py-3 font-bold text-brand" href="contact.html" aria-current="page">Contact</a>
-          <a class="mt-2 block rounded-lg bg-brand px-4 py-3 text-center font-bold text-white" href="#contact-form">Talk to an Expert →</a>
+      <details id="mobileNavigation" class="mobile-navigation relative shrink-0 lg:hidden">
+        <summary class="mobile-menu-button flex min-h-11 min-w-11 cursor-pointer select-none items-center justify-center rounded-xl border border-slate-200 bg-white px-3 text-2xl leading-none text-navy shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-blue-100" aria-label="Open navigation menu">
+          <span class="menu-open-icon" aria-hidden="true">☰</span>
+          <span class="menu-close-icon" aria-hidden="true">×</span>
+        </summary>
+        <nav class="mobile-navigation-panel rounded-xl border border-slate-200 bg-white p-2 shadow-2xl" aria-label="Mobile navigation">
+          <a class="mobile-navigation-link block rounded-lg px-4 py-3 font-semibold text-slate-700 hover:bg-blue-50 hover:text-brand" href="index.html">Home</a>
+          <a class="mobile-navigation-link block rounded-lg px-4 py-3 font-semibold text-slate-700 hover:bg-blue-50 hover:text-brand" href="about.html">About</a>
+          <a class="mobile-navigation-link block rounded-lg px-4 py-3 font-semibold text-slate-700 hover:bg-blue-50 hover:text-brand" href="services.html">Services</a>
+          <a class="mobile-navigation-link block rounded-lg px-4 py-3 font-semibold text-slate-700 hover:bg-blue-50 hover:text-brand" href="products.html">Products</a>
+          <a class="mobile-navigation-link block rounded-lg px-4 py-3 font-semibold text-slate-700 hover:bg-blue-50 hover:text-brand" href="industries.html">Industries</a>
+          <a class="mobile-navigation-link block rounded-lg px-4 py-3 font-semibold text-slate-700 hover:bg-blue-50 hover:text-brand" href="portfolio.html">Portfolio</a>
+          <a class="mobile-navigation-link block rounded-lg px-4 py-3 font-semibold text-slate-700 hover:bg-blue-50 hover:text-brand" href="blog.html">Blog</a>
+          <a class="mobile-navigation-link block rounded-lg bg-blue-50 px-4 py-3 font-bold text-brand" href="contact.html" aria-current="page">Contact</a>
+          <a class="mobile-navigation-link mt-2 block rounded-lg bg-brand px-4 py-3 text-center font-bold text-white hover:bg-blue-700" href="#contact-form">Talk to an Expert →</a>
         </nav>
       </details>
     </div>
@@ -404,44 +439,64 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Keep the mobile menu above page content and make all links easy to tap.
+    (function () {
+      const menu = document.getElementById("mobileNavigation");
+      if (!menu) return;
+      const summary = menu.querySelector("summary");
+      const panel = menu.querySelector("nav");
+
+      function positionMenu() {
+        const header = menu.closest("header");
+        const headerBottom = header ? header.getBoundingClientRect().bottom : 100;
+        document.documentElement.style.setProperty(
+          "--mobile-menu-top",
+          Math.max(8, Math.round(headerBottom + 8)) + "px"
+        );
+      }
+
+      function updateState() {
+        const isOpen = menu.open;
+        summary.setAttribute("aria-expanded", String(isOpen));
+        summary.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        if (isOpen) positionMenu();
+      }
+
+      menu.addEventListener("toggle", updateState);
+      window.addEventListener("resize", positionMenu, { passive: true });
+      window.addEventListener("scroll", function () {
+        if (menu.open) positionMenu();
+      }, { passive: true });
+
+      panel.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          menu.open = false;
+        });
+      });
+
+      document.addEventListener("click", function (event) {
+        if (menu.open && !menu.contains(event.target)) menu.open = false;
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && menu.open) {
+          menu.open = false;
+          summary.focus();
+        }
+      });
+
+      updateState();
+    })();
+  </script>
+
   <script>
     // Keep the Indian mobile field to at most 10 digits.
     const phoneInput = document.getElementById("phone");
     if (phoneInput) {
       phoneInput.addEventListener("input", () => {
-        phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 10);
-      });
-    }
-
-    // Require an email with a dotted domain and alphabetic suffix:
-    // e.g. person@example.com, person@company.in, or person@example.co.uk.
-    const emailInput = document.getElementById("email");
-    const contactForm = emailInput ? emailInput.closest("form") : null;
-    const strictEmailPattern = /^[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:\.[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)*\.[A-Z]{2,}$/i;
-
-    function validateEmail() {
-      if (!emailInput) return true;
-      const value = emailInput.value.trim();
-      const valid = value === "" ? false : strictEmailPattern.test(value);
-      emailInput.setCustomValidity(
-        valid || value === ""
-          ? ""
-          : "Enter a valid email such as name@example.com. A dotted domain ending in at least 2 letters is required."
-      );
-      return valid;
-    }
-
-    if (emailInput) {
-      emailInput.addEventListener("input", validateEmail);
-      emailInput.addEventListener("blur", validateEmail);
-    }
-
-    if (contactForm) {
-      contactForm.addEventListener("submit", (event) => {
-        if (!validateEmail()) {
-          event.preventDefault();
-          emailInput.reportValidity();
-        }
+        phoneInput.value = phoneInput.value.replace(/\\D/g, "").slice(0, 10);
       });
     }
   </script>
