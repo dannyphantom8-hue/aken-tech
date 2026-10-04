@@ -10,7 +10,6 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="responsiveness/responsive.css" />
-    <script src="responsiveness/menu.js" defer></script>
     <style>
       :root {
         --navy: #0a1f44;
@@ -248,11 +247,51 @@
         background: #04162d;
         color: #fff;
       }
+      header.sticky { position: sticky; top: 0; }
       .mobile-menu {
         display: none;
       }
       .mobile-menu.open {
         display: block;
+      }
+      /* Self-contained, touch-friendly mobile navigation */
+      .mobile-toggle {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #mobileMenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        max-height: calc(100dvh - 96px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        box-shadow: 0 12px 24px rgba(10, 31, 68, 0.12);
+      }
+      #mobileMenu a {
+        display: block;
+        min-height: 44px;
+        touch-action: manipulation;
+      }
+      @media (max-width: 767px) {
+        .desktop-nav { display: none !important; }
+        .mobile-toggle { display: inline-flex !important; }
+        #mobileMenu { width: 100%; }
+      }
+      @media (min-width: 768px) {
+        #mobileMenu { display: none !important; }
       }
       .faq-answer {
         display: none;
@@ -374,7 +413,6 @@
           ><button
             type="button"
             class="mobile-toggle text-2xl p-1 text-slate-800 hover:text-blue-600 transition-colors"
-            onclick="toggleMenu(event)"
             aria-label="Open navigation menu"
             aria-expanded="false"
           >
@@ -765,6 +803,60 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      (() => {
+        const initMobileMenu = () => {
+          const button = document.querySelector(".mobile-toggle");
+          const menu = document.getElementById("mobileMenu");
+          if (!button || !menu) return;
+
+          const setMenuOpen = (open) => {
+            menu.classList.toggle("open", open);
+            button.setAttribute("aria-expanded", String(open));
+            button.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+            button.textContent = open ? "✕" : "☰";
+          };
+
+          setMenuOpen(false);
+          button.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setMenuOpen(!menu.classList.contains("open"));
+          });
+
+          menu.querySelectorAll("a[href]").forEach((link) => {
+            link.addEventListener("click", () => {
+              setMenuOpen(false);
+              // Leave normal anchor navigation intact so GitHub Pages paths work.
+            });
+          });
+
+          document.addEventListener("click", (event) => {
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+              setMenuOpen(false);
+            }
+          });
+
+          document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              setMenuOpen(false);
+              button.focus();
+            }
+          });
+
+          window.addEventListener("resize", () => {
+            if (window.innerWidth >= 768) setMenuOpen(false);
+          });
+        };
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initMobileMenu, { once: true });
+        } else {
+          initMobileMenu();
+        }
+      })();
+    </script>
+
     <script>
       function updateScrollProgress() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
