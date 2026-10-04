@@ -9,8 +9,6 @@
       content="Aken Tech Solution — technology, digital marketing, automation and growth solutions."
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="responsiveness/responsive.css" />
-    <script src="responsiveness/menu.js" defer></script>
     <style>
       :root {
         --navy: #0a1f44;
@@ -248,12 +246,12 @@
         background: #04162d;
         color: #fff;
       }
-      .mobile-menu {
-        display: none;
-      }
-      .mobile-menu.open {
-        display: block;
-      }
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: block; }
+      .mobile-menu[hidden] { display: none !important; }
+      .mobile-toggle { display: none; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border: 0; background: transparent; cursor: pointer; touch-action: manipulation; }
+      .navbar-container { position: relative; }
+      #mobileMenu { position: absolute; top: 100%; left: 0; right: 0; z-index: 1000; max-height: calc(100dvh - 80px); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 12px 24px rgba(10,31,68,.14); }
       .faq-answer {
         display: none;
       }
@@ -298,13 +296,18 @@
         .stat {
           padding: 16px 8px;
         }
+        .mobile-toggle { display: inline-flex; }
+        .desktop-nav { display: none !important; }
+        .navbar-container { min-height: 64px; height: auto; }
+        .topbar .container-x { overflow: hidden; }
       }
       @media (min-width: 768px) {
-        .mobile-toggle {
-          display: none;
-        }
+        .mobile-toggle { display: none !important; }
+        #mobileMenu { display: none !important; }
       }
-    </style>
+    
+.mobile-menu[hidden] { display: none !important; }
+</style>
   </head>
   <body>
     <div id="scrollProgressBar" class="scroll-progress-bar" style="width: 0%;"></div>
@@ -374,17 +377,18 @@
           ><button
             type="button"
             class="mobile-toggle text-2xl p-1 text-slate-800 hover:text-blue-600 transition-colors"
-            onclick="toggleMenu(event)"
+            id="mobileMenuToggle" onclick="toggleMenu(event)"
             aria-label="Open navigation menu"
             aria-expanded="false"
           >
-            ☰
+            <span data-menu-icon aria-hidden="true">☰</span>
           </button>
         </div>
       </div>
       <div
         id="mobileMenu"
-        class="mobile-menu lg:hidden border-t bg-white px-5 pb-4"
+        class="mobile-menu border-t bg-white px-5 pb-4"
+        hidden
       >
         <a
           class="block py-3 border-b border-slate-100 font-semibold"
@@ -1031,5 +1035,57 @@
           });
       });
     </script>
-  </body>
+  
+
+<script>
+(function () {
+  const menu = document.getElementById("mobileMenu");
+  const button = document.getElementById("mobileMenuToggle");
+  if (!menu || !button) return;
+
+  function setMenu(open) {
+    menu.hidden = !open;
+    menu.classList.toggle("open", open);
+    button.setAttribute("aria-expanded", String(open));
+    button.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    const icon = button.querySelector("[data-menu-icon]");
+    if (icon) icon.textContent = open ? "✕" : "☰";
+  }
+
+  window.toggleMenu = function (event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setMenu(menu.hidden || !menu.classList.contains("open"));
+  };
+
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setMenu(false);
+    });
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!menu.hidden && !menu.contains(event.target) && !button.contains(event.target)) {
+      setMenu(false);
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !menu.hidden) {
+      setMenu(false);
+      button.focus();
+    }
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth >= 768) setMenu(false);
+  });
+
+  setMenu(false);
+})();
+</script>
+
+</body>
 </html>
