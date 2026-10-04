@@ -9,8 +9,6 @@
       content="Aken Tech Solution — technology, digital marketing, automation and growth solutions."
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="responsiveness/responsive.css" />
-    <script src="responsiveness/menu.js" defer></script>
     <style>
       :root {
         --navy: #0a1f44;
@@ -248,11 +246,57 @@
         background: #04162d;
         color: #fff;
       }
-      .mobile-menu {
+      /* Self-contained responsive navigation */
+      .mobile-toggle {
         display: none;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        border: 1px solid #dce5f0;
+        border-radius: 10px;
+        background: #fff;
+        line-height: 1;
+        cursor: pointer;
+        touch-action: manipulation;
       }
-      .mobile-menu.open {
+      #mobileMenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        max-height: calc(100dvh - 90px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding: 8px 20px calc(16px + env(safe-area-inset-bottom));
+        background: #fff;
+        border-top: 1px solid #e5edf6;
+        box-shadow: 0 14px 24px rgba(10, 31, 68, 0.14);
+      }
+      #mobileMenu.open { display: block; }
+      #mobileMenu a {
         display: block;
+        min-height: 46px;
+        padding: 13px 4px;
+        border-bottom: 1px solid #eef2f7;
+        color: #172033;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      #mobileMenu a:hover,
+      #mobileMenu a:focus-visible { color: #126fe8; }
+      #mobileMenu a.btn { margin-top: 12px; text-align: center; color: #fff; }
+      @media (max-width: 1023px) {
+        .desktop-nav { display: none !important; }
+        .mobile-toggle { display: inline-flex; }
+        .navbar-container { position: relative; }
+      }
+      @media (min-width: 1024px) {
+        #mobileMenu { display: none !important; }
+        .mobile-toggle { display: none !important; }
+        .desktop-nav { display: flex !important; }
       }
       .faq-answer {
         display: none;
@@ -308,7 +352,7 @@
   </head>
   <body>
     <div id="scrollProgressBar" class="scroll-progress-bar" style="width: 0%;"></div>
-    <header class="sticky top-0 z-50 bg-white shadow-sm">
+    <header class="sticky top-0 z-50 bg-white shadow-sm relative">
       <div class="topbar">
         <div class="container-x h-8 flex items-center justify-between text-xs">
           <span class="font-medium text-slate-200">Your Growth Partner in Technology & Marketing</span>
@@ -373,8 +417,10 @@
             >Talk to an Expert →</a
           ><button
             type="button"
+            id="mobileMenuToggle"
             class="mobile-toggle text-2xl p-1 text-slate-800 hover:text-blue-600 transition-colors"
-            onclick="toggleMenu(event)"
+            type="button"
+            aria-controls="mobileMenu"
             aria-label="Open navigation menu"
             aria-expanded="false"
           >
@@ -963,5 +1009,58 @@
           });
       });
     </script>
+
+    <script>
+      (() => {
+        function initMobileNavigation() {
+          const toggle = document.getElementById("mobileMenuToggle");
+          const menu = document.getElementById("mobileMenu");
+          const header = toggle && toggle.closest("header");
+          if (!toggle || !menu || !header) return;
+
+          const isMobileLayout = () => window.matchMedia("(max-width: 1023px)").matches;
+
+          function setMenuOpen(open) {
+            const shouldOpen = Boolean(open) && isMobileLayout();
+            menu.classList.toggle("open", shouldOpen);
+            toggle.setAttribute("aria-expanded", String(shouldOpen));
+            toggle.setAttribute("aria-label", shouldOpen ? "Close navigation menu" : "Open navigation menu");
+            toggle.textContent = shouldOpen ? "×" : "☰";
+          }
+
+          toggle.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setMenuOpen(toggle.getAttribute("aria-expanded") !== "true");
+          });
+
+          menu.addEventListener("click", (event) => {
+            if (event.target.closest("a")) setMenuOpen(false);
+          });
+
+          document.addEventListener("click", (event) => {
+            if (!header.contains(event.target)) setMenuOpen(false);
+          });
+
+          document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+              setMenuOpen(false);
+              toggle.focus();
+            }
+          });
+
+          window.addEventListener("resize", () => {
+            if (!isMobileLayout()) setMenuOpen(false);
+          }, { passive: true });
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initMobileNavigation, { once: true });
+        } else {
+          initMobileNavigation();
+        }
+      })();
+    </script>
+
   </body>
 </html>
