@@ -10,7 +10,7 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="responsiveness/responsive.css" />
-    <script src="responsiveness/menu.js" defer></script>
+    
     <style>
       :root {
         --navy: #0a1f44;
@@ -308,6 +308,79 @@
           display: none;
         }
       }
+    
+      /* ===== FIXED MOBILE NAVIGATION ===== */
+      @media (max-width: 1023px) {
+        .desktop-nav {
+          display: none !important;
+        }
+
+        .mobile-toggle {
+          display: inline-flex !important;
+          width: 44px;
+          height: 44px;
+          align-items: center;
+          justify-content: center;
+          padding: 0 !important;
+          border: 1px solid #dce5f0;
+          border-radius: 10px;
+          background: #fff;
+          color: #0a1f44;
+          cursor: pointer;
+          flex-shrink: 0;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-toggle svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        .mobile-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          max-height: calc(100vh - 96px);
+          overflow-y: auto;
+          background: #fff;
+          border-top: 1px solid #e5edf6;
+          box-shadow: 0 12px 24px rgba(10, 31, 68, 0.12);
+          z-index: 1000;
+        }
+
+        .mobile-menu.open {
+          display: block !important;
+        }
+
+        .mobile-menu a {
+          min-height: 48px;
+          display: flex;
+          align-items: center;
+        }
+
+        .mobile-backdrop {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(4, 22, 45, 0.18);
+          z-index: 40;
+        }
+
+        .mobile-backdrop.open {
+          display: block;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .mobile-toggle,
+        .mobile-menu,
+        .mobile-backdrop {
+          display: none !important;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -376,26 +449,32 @@
             class="btn btn-primary text-xs hidden sm:inline-flex md:inline-flex whitespace-nowrap flex-shrink-0 px-3.5 py-2"
             >Talk to an Expert →</a
           ><button
+            id="mobileMenuButton"
             type="button"
-            class="mobile-toggle text-2xl p-1 text-slate-800 hover:text-blue-600 transition-colors"
-            onclick="toggleMenu(event)"
+            class="mobile-toggle"
             aria-label="Open navigation menu"
             aria-expanded="false"
+            aria-controls="mobileMenu"
           >
-            ☰
+            <svg id="menuIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
           </button>
         </div>
       </div>
+      <div id="mobileMenuBackdrop" class="mobile-backdrop" aria-hidden="true"></div>
       <div
         id="mobileMenu"
-        class="mobile-menu lg:hidden border-t bg-white px-5 pb-4"
+        class="mobile-menu lg:hidden px-5 pb-4"
+        aria-hidden="true"
       >
         <a
-          class="block py-3 border-b border-slate-100 font-semibold"
+          class="mobile-menu-link block py-3 border-b border-slate-100 font-semibold"
           href="index.html"
           >Home</a
         ><a
-          class="block py-3 border-b border-slate-100 font-semibold"
+          class="mobile-menu-link block py-3 border-b border-slate-100 font-semibold"
           href="about.html"
           >About</a
         ><a
@@ -403,28 +482,28 @@
           href="services.html"
           >Services</a
         ><a
-          class="block py-3 border-b border-slate-100 font-semibold"
+          class="mobile-menu-link block py-3 border-b border-slate-100 font-semibold"
           href="products.html"
           >Products</a
         ><a
-          class="block py-3 border-b border-slate-100 font-semibold"
+          class="mobile-menu-link block py-3 border-b border-slate-100 font-semibold"
           href="industries.html"
           >Industries</a
         ><a
-          class="block py-3 border-b border-slate-100 font-semibold"
+          class="mobile-menu-link block py-3 border-b border-slate-100 font-semibold"
           href="portfolio.html"
           >Portfolio</a
         ><a
-          class="block py-3 border-b border-slate-100 font-semibold"
+          class="mobile-menu-link block py-3 border-b border-slate-100 font-semibold"
           href="blog.html"
           >Blog</a
         ><a
-          class="block py-3 border-b border-slate-100 font-semibold"
+          class="mobile-menu-link block py-3 border-b border-slate-100 font-semibold"
           href="contact.html"
           >Contact</a
         ><a
           href="contact.html"
-          class="btn btn-primary mt-4 w-full justify-center"
+          class="mobile-menu-link btn btn-primary mt-4 w-full justify-center"
           >Talk to an Expert →</a
         >
       </div>
@@ -912,6 +991,69 @@
             );
         }
       });
+
+      // ===== FIXED MOBILE NAVIGATION =====
+      (function () {
+        const button = document.getElementById("mobileMenuButton");
+        const menu = document.getElementById("mobileMenu");
+        const backdrop = document.getElementById("mobileMenuBackdrop");
+        const icon = document.getElementById("menuIcon");
+
+        if (!button || !menu) return;
+
+        function setMenu(open) {
+          menu.classList.toggle("open", open);
+          if (backdrop) backdrop.classList.toggle("open", open);
+
+          button.setAttribute("aria-expanded", String(open));
+          button.setAttribute(
+            "aria-label",
+            open ? "Close navigation menu" : "Open navigation menu"
+          );
+          menu.setAttribute("aria-hidden", String(!open));
+
+          if (icon) {
+            icon.innerHTML = open
+              ? '<path d="M6 6l12 12M18 6L6 18"></path>'
+              : '<path d="M4 6h16M4 12h16M4 18h16"></path>';
+          }
+
+          document.body.style.overflow = open ? "hidden" : "";
+        }
+
+        // Keep this function globally available.
+        window.toggleMenu = function (event) {
+          if (event) event.preventDefault();
+          setMenu(!menu.classList.contains("open"));
+        };
+
+        button.addEventListener("click", function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          setMenu(!menu.classList.contains("open"));
+        });
+
+        if (backdrop) {
+          backdrop.addEventListener("click", function () {
+            setMenu(false);
+          });
+        }
+
+        menu.querySelectorAll(".mobile-menu-link").forEach(function (link) {
+          link.addEventListener("click", function () {
+            setMenu(false);
+          });
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") setMenu(false);
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth >= 1024) setMenu(false);
+        });
+      })();
+
       document.addEventListener("DOMContentLoaded", () => {
         const s = document.querySelector("#blogSearch");
         if (s)
